@@ -1,0 +1,32 @@
+﻿@using MVCAppIntro.Models
+@model List<ProductModel>
+<!-- @@model declaration ile view gönderilen modele bağlanılır. -->
+@{
+  ViewData["Title"] = "Index";
+}
+
+
+<!-- Kullanıcı sisteme giriş yaptıysa kullanıcı ismi görünsün -->
+
+@if(User.Identity.IsAuthenticated)
+{
+  <p>
+    Hoş geldiniz @User?.Identity?.Name
+  </p>
+}
+
+ @if(User.IsInRole("Admin")){ // Login olana user bu roldemi
+  <p>
+    Sadece Admin Rolü görebilir
+  </p>
+  }
+
+
+@if(User.IsInRole("Manager")){
+<p>
+  Sadece Manager Rolü görebilir
+</p>
+}
+
+
+
